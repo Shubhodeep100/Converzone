@@ -23,13 +23,19 @@ const Conversation = ({ conversation }: { conversation: any }) => {
                     </AvatarFallback>
                 </Avatar>
                 <div className='w-full'>
-                    <div className='flex items-center'>
-                        <h3 className='text-xs lg:text-sm font-medium'>{conversationName}</h3>
-                        <span className='text-[10px] lg:text-xs text-gray-500 ml-auto'>
-                            {formatDate(lastMessage?._creationTime || conversation._creationTime)}
-                        </span>
-                    </div>
-                   
+                    
+                    <p className='text-[12px] mt-1 text-gray-500 flex items-center gap-1 '>
+                        {lastMessage?.sender === authUser?._id ? <MessageSeenSvg /> : ""}
+                        {conversation.isGroup && <Users size={16} />}
+                        {!lastMessage && "Say Hi!"}
+                        {lastMessageType === "text" && lastMessage?.content.length > 30 ? (
+                            <span className='text-xs'>{lastMessage?.content.slice(0, 30)}...</span>
+                        ) : (
+                            <span className='text-xs'>{lastMessage?.content}</span>
+                        )}
+                        {lastMessageType === "image" && <ImageIcon size={16} />}
+                        {lastMessageType === "video" && <VideoIcon size={16} />}
+                    </p>
                 </div>
             </div>
             <hr className='h-[1px] mx-10 bg-gray-primary' />
