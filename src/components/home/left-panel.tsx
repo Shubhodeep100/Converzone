@@ -20,7 +20,7 @@ const LeftPanel = () => {
                 </div>
                 <div className='p-3 flex items-center'>
                     {/* Search */}
-                    <div className='relative h-10 mx-3 flex-1'>
+                    <div className='relative h-10 mx-1 flex-1'>
                         <Search
                             className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10'
                             size={18}
@@ -28,7 +28,7 @@ const LeftPanel = () => {
                         <Input
                             type='text'
                             placeholder='Search or start a new chat'
-                            className='pl-10 py-2 text-sm w-full rounded shadow-sm bg-gray-primary focus-visible:ring-transparent'
+                            className='pl-10 py-2 text-sm w-full rounded-lg shadow-sm bg-gray-primary focus-visible:ring-transparent'
                         />
                     </div>
                     <ListFilter className='cursor-pointer' />
@@ -42,7 +42,7 @@ const LeftPanel = () => {
                 {conversations?.length === 0 && (
                     <>
                         <p className='text-center text-gray-500 text-sm mt-3'>No conversations yet</p>
-                        <p className='text-center text-gray-500 text-sm mt-3 '>
+                        <p className='text-center text-gray-500 text-sm mt-3 px-2'>
                             We understand {"you're"} an introvert, but {"you've"} got to start somewhere 😊
                         </p>
                     </>
