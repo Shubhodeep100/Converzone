@@ -1,7 +1,7 @@
 const RightPanel = () => {
     return (
         <div>
-            RightPanel
+         This is RightPanel
         </div>
     )
 }
