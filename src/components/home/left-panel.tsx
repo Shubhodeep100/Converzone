@@ -2,6 +2,7 @@ import { ListFilter, LogOut, MessageSquareDiff, Search, User } from "lucide-reac
 import { Input } from "../ui/input";
 import ThemeSwitch from "./theme-switch";
 import { conversations } from "@/dummy-data/db";
+import Conversation from "./conversation";
 
 const LeftPanel = () => {
 
@@ -37,7 +38,10 @@ const LeftPanel = () => {
 
             {/* Chat List */}
             <div className='my-3 flex flex-col gap-0 max-h-[80%] overflow-auto'>
-                {/* Conversations will go here*/}
+
+                {conversations.map((conversation) => (
+                    <Conversation key={conversation._id} conversation={conversation} />
+                ))}
 
                 {conversations?.length === 0 && (
                     <>
