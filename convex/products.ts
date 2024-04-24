@@ -1,11 +1,10 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-export const getTasks = query({
-  args: {},
-  handler: async (ctx, args) => {
-    const tasks = await ctx.db.query("tasks").collect();
-    return tasks;
+export const getProducts = query({
+  handler: async (ctx) => {
+    const products = await ctx.db.query("products").collect();
+    return products;
   },
 });
 
@@ -23,19 +22,19 @@ export const addTask = mutation({
 });
 
 export const completeTask = mutation({
-    args: {
-        id: v.id("tasks"),
-    },
-    handler: async (ctx, args) => {
-        await ctx.db.patch(args.id,{completed: true})
-    },
+  args: {
+    id: v.id("tasks"),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, { completed: true });
+  },
 });
 
 export const deleteTask = mutation({
-    args: {
-        id: v.id("tasks"),
-    },
-    handler: async (ctx, args) => {
-        await ctx.db.delete(args.id)
-    },
+  args: {
+    id: v.id("tasks"),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
 });
