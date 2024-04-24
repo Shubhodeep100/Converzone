@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
+// Getting Products
 export const getProducts = query({
   handler: async (ctx) => {
     const products = await ctx.db.query("products").collect();
@@ -8,31 +9,26 @@ export const getProducts = query({
   },
 });
 
-export const addTask = mutation({
+// Adding products
+export const addProduct = mutation({
   args: {
-    text: v.string(),
+    name: v.string(),
+    price: v.number(),
   },
+
   handler: async (ctx, args) => {
-    const taskId = await ctx.db.insert("tasks", {
-      text: args.text,
-      completed: false,
+    const productId = await ctx.db.insert("products", {
+      name: args.name,
+      price: args.price,
     });
-    return taskId;
+    return productId;
   },
 });
 
-export const completeTask = mutation({
+// Deleting products
+export const deleteProducts = mutation({
   args: {
-    id: v.id("tasks"),
-  },
-  handler: async (ctx, args) => {
-    await ctx.db.patch(args.id, { completed: true });
-  },
-});
-
-export const deleteTask = mutation({
-  args: {
-    id: v.id("tasks"),
+    id: v.id("products"),
   },
   handler: async (ctx, args) => {
     await ctx.db.delete(args.id);
