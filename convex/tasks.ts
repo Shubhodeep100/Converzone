@@ -13,10 +13,10 @@ export const addTasks = mutation({
     text: v.string(),
   },
   handler: async (ctx, args) => {
-    const tasks = await ctx.db.insert("tasks", {
+    const taskId = await ctx.db.insert("tasks", {
       text: args.text,
       completed: false,
     });
-    return tasks;
+    return taskId;
   },
 });
