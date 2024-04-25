@@ -1,7 +1,7 @@
 const authConfig = {
   providers: [
     {
-      domain: "https://crucial-unicorn-74.clerk.accounts.dev",
+      domain: process.env.CLERK_ISSUER_URL,
       applicationID: "convex",
     },
   ],
